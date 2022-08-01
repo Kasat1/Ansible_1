@@ -11,7 +11,7 @@
                                         - { name: Phillip, surname: Haslett }         
                                         - { name: Veronika, surname: Hettlinger }
                                                          .....
-And produce the following result:  
+        And produce the following result:  
     - Aliaskei_Kasatau@epam.com if no domain passed (use @epam.com as a default value)
     - Aliaksei_Kasatau@local.host if a @local.host domain was passed to the filter
 
