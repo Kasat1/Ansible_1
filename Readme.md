@@ -7,7 +7,7 @@
     Try to use lists|file|dictionaries with excess number of names/surnames and form name/surname pairs dynamically.
                         vars:
                                 namesdb:
-                                        - { name: hearald, surname: Strong }         
+                                        - { name: Hearald, surname: Strong }         
                                         - { name: Phillip, surname: Haslett }         
                                         - { name: Veronika, surname: Hettlinger }
                                                          .....
