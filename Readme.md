@@ -5,12 +5,12 @@
 ## 5.	Generate 5 email addresses for the users using custom filter.
 Filter should receive a map with your 5 users created beforehand like this (slide 59 part3)
 Try to use lists|file|dictionaries with excess number of names/surnames and form name/surname pairs dynamically.
-        vars:
-            namesdb:
-                - { name: Aliaksei, surname: Kasatau }         
-                - { name: Phillip, surname: Haslett }         
-                - { name: Veronika, surname: Hettlinger }
-                      .....
+                        vars:
+                                namesdb:
+                                        - { name: Aliaksei, surname: Kasatau }         
+                                        - { name: Phillip, surname: Haslett }         
+                                        - { name: Veronika, surname: Hettlinger }
+                                                         .....
 And produce the following result:  
     - Aliaskei_Kasatau@epam.com if no domain passed (use @epam.com as a default value)
     - Aliaksei_Kasatau@local.host if a @local.host domain was passed to the filter
