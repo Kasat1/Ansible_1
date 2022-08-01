@@ -1,0 +1,53 @@
+  - name: Create Group "{{ username }}"
+    ansible.builtin.group:
+      name: "{{ username }}"
+      state: present
+  
+  - name: Create User
+    ansible.builtin.user: 
+      name: "{{ username }}"
+      shell: /bin/bash
+      groups: "{{ username }}"
+      generate_ssh_key: true
+      append: yes
+    register: user
+
+  - name: Key 
+    ansible.builtin.copy:
+      content: "{{ user.ssh_public_key }}"
+      dest: "/home/{{ username }}/.ssh/authorized_keys"
+      force: yes
+      group: "{{ username }}"
+      owner: "{{ username }}"
+      mode: "0400"
+
+  - name: Copy key
+    ansible.builtin.fetch:
+      src: "/home/{{ username }}/.ssh/id_rsa"
+      dest: "keys/{{ username }}.key"
+      force: yes
+      mode: "0400"
+  
+  - name: create user vhost dir
+    ansible.builtin.file:
+      path: "/var/www/{{ username }}"
+      group: "{{ username }}"
+      owner: "{{ username }}"
+      state: directory
+  
+  - name: create index_html
+    template:
+      src: templates/index.html.j2
+      dest: "/var/www/{{ username }}/index.html"
+    become: yes
+    become_user: root
+
+  - name: ccreate vhost files
+    template:
+      src: templates/vhsot.j2
+      dest: "/etc/nginx/conf.d/{{ username }}.conf"
+      group: "{{ username }}"
+      owner: "{{ username }}"
+    notify: 
+    - Reload Nginx
+    

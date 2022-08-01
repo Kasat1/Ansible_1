@@ -1,0 +1,48 @@
+- name: Nginx and Vhosts
+  hosts: app
+  become: true
+  become_user: root
+
+  vars: 
+    users:
+    - { name: Aliaksei, surname: Kasatau,  id: 004 }
+    - { name: James, surname: Vicari, id: 003 }
+    - { name: Phillip, surname: Haslett, id: 002 }
+    - { name: Veronika, surname: Hettlinger, id: 001 }
+    - { name: Vernon, surname: Roshe, id: 000 }
+
+  tasks:
+    - name: Run nginx
+      include_role: 
+        name: "nginx"
+        
+    - name: Users
+      include_role:
+        name: "user"
+      vars:
+        username: "{{ item.name }}"
+        userid: "{{ item.id }}"
+        surname: "{{ item.surname }}"
+        #email: "{{ item.name | email }}"
+      loop: "{{ users }}"
+    
+    - name: update /etc/hosts
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        line: "{{ groups['app'][0] }} {{ item.name }}.local"
+        owner: root
+        group: root
+        mode: "0644"
+      loop: "{{ users }}"
+      delegate_to: localhost
+
+    - name: module library/check.sh
+      check:
+        url: http://Phillip.local
+        response_code: "200"
+      become: true
+      become_user: root
+      delegate_to: localhost
+
+
+

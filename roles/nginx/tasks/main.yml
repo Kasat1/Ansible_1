@@ -1,0 +1,16 @@
+  - name: Isntall nginx package
+    package: name=nginx
+    become: yes
+    become_user: root
+
+  - name: Start nginx
+    systemd: name=nginx state=started
+    become: yes
+    become_user: root
+
+# - name: Copy template
+#   template:
+#     src: templates/index.html.j2
+#     dest: "{{ nginx_root[ansible_distribution] }}/index.html"
+#   become: yes
+#   become_user: root

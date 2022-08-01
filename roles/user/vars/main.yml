@@ -1,0 +1,4 @@
+
+namedb:
+- { name: "{{ username }}", surname: "{{ surname }}"}
+
