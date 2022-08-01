@@ -3,8 +3,8 @@
 ## 3.	Generate credentials for each user and configure passwordless authentication (via ssh keys)
 ## 4.	Create 5 vhosts for Nginx available for the corresponding users.
 ## 5.	Generate 5 email addresses for the users using custom filter.
-Filter should receive a map with your 5 users created beforehand like this (slide 59 part3)
-Try to use lists|file|dictionaries with excess number of names/surnames and form name/surname pairs dynamically.
+    Filter should receive a map with your 5 users created beforehand like this (slide 59 part3)
+    Try to use lists|file|dictionaries with excess number of names/surnames and form name/surname pairs dynamically.
                         vars:
                                 namesdb:
                                         - { name: Aliaksei, surname: Kasatau }         
