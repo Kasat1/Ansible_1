@@ -7,13 +7,13 @@
     Try to use lists|file|dictionaries with excess number of names/surnames and form name/surname pairs dynamically.
                         vars:
                                 namesdb:
-                                        - { name: Aliaksei, surname: Kasatau }         
+                                        - { name: hearald, surname: Strong }         
                                         - { name: Phillip, surname: Haslett }         
                                         - { name: Veronika, surname: Hettlinger }
                                                          .....
         And produce the following result:  
-    - Aliaskei_Kasatau@epam.com if no domain passed (use @epam.com as a default value)
-    - Aliaksei_Kasatau@local.host if a @local.host domain was passed to the filter
+    - Herald_Strong@epam.com if no domain passed (use @epam.com as a default value)
+    - Herald_strong@local.host if a @local.host domain was passed to the filter
 
 ## 6.	Create custom pages for vhosts using emails received from your custom filter.
 ## 7.	Create your custom module for vhosts health checking (input: target_url, valid_response_code; output: healthy=>true | unhealthy=>false)
